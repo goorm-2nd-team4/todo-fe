@@ -10,15 +10,19 @@ interface TodoListProps {
 
 export function TodoList({ todos, onToggle, onEdit, onDelete }: TodoListProps) {
   if (todos.length === 0) {
-    return <p>할 일 목록이 비어있습니다.</p>;
+    return (
+      <div className="text-center py-16 text-[#9ca3af] text-[15px]">
+        <p>No tasks</p>
+      </div>
+    );
   }
   return (
-    <ul>
+    <div className="flex flex-col gap-[12px] w-[668px]">
       {todos.map((todo) => (
-        <li key={todo.id}>
+        <div key={todo.id}>
           <TodoCard todo={todo} onToggle={onToggle} onEdit={onEdit} onDelete={onDelete} />
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
