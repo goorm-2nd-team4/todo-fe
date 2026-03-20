@@ -14,7 +14,7 @@ describe('TodoList', () => {
   it('todos가 비어있을 때 빈 상태 메시지가 표시된다.', () => {
     render(<TodoList todos={[]} onToggle={vi.fn()} onEdit={vi.fn()} onDelete={vi.fn()} />);
 
-    expect(screen.getByText('할 일 목록이 비어있습니다.')).toBeInTheDocument();
+    expect(screen.getByText('No tasks')).toBeInTheDocument();
   });
 
   it('todo의 개수만큼 카드가 렌더링된다.', () => {
