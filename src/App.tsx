@@ -21,16 +21,23 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-md flex flex-col gap-2">
-        <h1 className="text-4xl font-bold text-center">TODO APP</h1>
-        <TodoList
-          todos={todos}
-          onToggle={handleToggle}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        />
+    <div className="min-h-screen bg-[#f5f5f5] flex flex-col items-center">
+      {/* spacer */}
+      <div className="h-[25vh]" />
+
+      {/* Title & Task Count */}
+      <div className="text-center">
+        <h1 className="font-bold text-[72px] text-[#1a1a1a] tracking-tight">TODO APP</h1>
+        <p className="text-[16px] text-[#6e7781]">
+          {todos.filter((t) => t.completed).length} of {todos.length} tasks completed
+        </p>
       </div>
+
+      {/* spacer */}
+      <div className="h-[1vh]" />
+
+      {/* TodoList Component */}
+      <TodoList todos={todos} onToggle={handleToggle} onEdit={handleEdit} onDelete={handleDelete} />
     </div>
   );
 }
