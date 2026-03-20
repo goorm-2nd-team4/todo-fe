@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TodoCard } from './components/TodoCard';
+import { TodoList } from './components/TodoList';
 import { DUMMY_TODOS } from './mocks/todos';
 import type { Todo } from './types/todo';
 
@@ -24,15 +24,12 @@ function App() {
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-md flex flex-col gap-2">
         <h1 className="text-4xl font-bold text-center">TODO APP</h1>
-        {todos.map((todo) => (
-          <TodoCard
-            key={todo.id}
-            todo={todo}
-            onToggle={handleToggle}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-          />
-        ))}
+        <TodoList
+          todos={todos}
+          onToggle={handleToggle}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
       </div>
     </div>
   );
