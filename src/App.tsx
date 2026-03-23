@@ -1,24 +1,8 @@
-import { useState } from 'react';
 import { TodoList } from './components/TodoList';
-import { DUMMY_TODOS } from './mocks/todos';
-import type { Todo } from './types/todo';
+import { useTodos } from './hooks/useTodos';
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>(DUMMY_TODOS);
-
-  const handleToggle = (id: string) => {
-    setTodos((prev) =>
-      prev.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)),
-    );
-  };
-
-  const handleEdit = (id: string, newTitle: string) => {
-    setTodos((prev) => prev.map((todo) => (todo.id === id ? { ...todo, title: newTitle } : todo)));
-  };
-
-  const handleDelete = (id: string) => {
-    setTodos((prev) => prev.filter((todo) => todo.id !== id));
-  };
+  const { todos, handleEdit, handleDelete, handleToggle } = useTodos();
 
   return (
     <div className="min-h-screen bg-[#f5f5f5] flex flex-col items-center">
