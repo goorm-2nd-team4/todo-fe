@@ -5,3 +5,6 @@ export interface Todo {
   title: string;
   completed: boolean;
 }
+
+// Todos는 Todo 배열로 취급한다.
+export type Todos = Todo[];

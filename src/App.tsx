@@ -1,53 +1,60 @@
 import React, { useState } from 'react';
-import './App.css';
 import TodoForm from './components/TodoForm';
+import { TodoList } from './components/TodoList';
+import { useTodos } from './hooks/useTodos';
 
-interface TodoItem {
-  id: number;
+interface Todo {
+  id: string | number;
   title: string;
   completed: boolean;
 }
 
 function App() {
-  const [todoData, setTodoData] = useState<TodoItem[]>([]);
+  const { todos, handleEdit, handleDelete, handleToggle, handleAdd } = useTodos() as {
+    todos: Todo[];
+    handleEdit: (id: string | number, title: string) => void;
+    handleDelete: (id: string | number) => void;
+    handleToggle: (id: string | number) => void;
+    handleAdd?: (title: string) => void;
+  };
+
   const [value, setValue] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!value.trim()) return;
 
-    const newTodo: TodoItem = {
-      id: Date.now(),
-      title: value,
-      completed: false,
-    };
+    if (handleAdd) {
+      handleAdd(value);
+    }
 
-    setTodoData((prev) => [...prev, newTodo]);
     setValue('');
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-blue-50 p-4">
-      <div className="w-full max-w-md p-6 bg-white rounded-xl shadow-md border border-gray-100">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">TODO APP</h1>
+    <div className="min-h-screen bg-[#f5f5f5] flex flex-col items-center p-4">
+      <div className="h-[20vh] md:h-[25vh]" />
 
+      <div className="text-center mb-10">
+        <h1 className="font-bold text-[48px] md:text-[72px] text-[#1a1a1a] tracking-tight leading-none">
+          TODO APP
+        </h1>
+        <p className="text-[16px] text-[#6e7781] mt-2">
+          {todos.filter((t) => t.completed).length} of {todos.length} tasks completed
+        </p>
+      </div>
+
+      <div className="w-full max-w-[550px] mb-8">
         <TodoForm value={value} setValue={setValue} handleSubmit={handleSubmit} />
+      </div>
 
-        <div className="mt-8 border-t border-gray-100 pt-4">
-          <ul className="space-y-3">
-            {todoData.map((todo) => (
-              <li
-                key={todo.id}
-                className="flex items-center p-3 bg-gray-50 rounded-lg border border-gray-200 text-gray-700 text-sm font-medium"
-              >
-                {todo.title}
-              </li>
-            ))}
-          </ul>
-          {todoData.length === 0 && (
-            <p className="text-center text-gray-400 text-sm mt-4">등록된 할 일이 없습니다.</p>
-          )}
-        </div>
+      <div className="w-full max-w-[550px]">
+        <TodoList
+          todos={todos}
+          onToggle={handleToggle}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
       </div>
     </div>
   );
