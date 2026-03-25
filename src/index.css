@@ -12,3 +12,20 @@ body {
     -apple-system,
     sans-serif;
 }
+
+/* ripple */
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(13, 111, 255, 0.3);
+  transform: scale(0);
+  animation: ripple-animation 0.5s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
