@@ -8,8 +8,8 @@ interface TodoFormProps {
 
 const TodoForm = ({ value, setValue, handleSubmit }: TodoFormProps) => {
   return (
-    <form 
-      onSubmit={handleSubmit} 
+    <form
+      onSubmit={handleSubmit}
       className="flex items-center bg-white p-2 pl-6 rounded-[32px] shadow-xl border border-gray-100 focus-within:ring-4 focus-within:ring-blue-100 transition-all duration-500"
     >
       <input
@@ -19,22 +19,22 @@ const TodoForm = ({ value, setValue, handleSubmit }: TodoFormProps) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      
+
       <button
         type="submit"
         style={{ backgroundColor: '#007AFF' }} // 테일윈드 대신 스타일로 강제 파란색 지정
         className="w-14 h-14 flex items-center justify-center text-white rounded-full shadow-lg shadow-blue-200 transition-all active:scale-90 disabled:bg-gray-100 disabled:text-gray-300 disabled:cursor-not-allowed group"
         disabled={!value.trim()}
       >
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          width="28" 
-          height="28" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="3" 
-          strokeLinecap="round" 
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="3"
+          strokeLinecap="round"
           strokeLinejoin="round"
           className="group-hover:rotate-90 transition-transform duration-300"
         >

@@ -27,7 +27,7 @@ function App() {
     if (handleAdd) {
       handleAdd(value);
     }
-    
+
     setValue('');
   };
 
@@ -38,7 +38,9 @@ function App() {
 
       {/* 제목 섹션 */}
       <div className="text-center mb-12">
-        <h1 className="font-bold text-[48px] md:text-[72px] text-[#1a1a1a] tracking-tight leading-none">TODO APP</h1>
+        <h1 className="font-bold text-[48px] md:text-[72px] text-[#1a1a1a] tracking-tight leading-none">
+          TODO APP
+        </h1>
         <p className="text-[16px] text-[#6e7781] mt-4 font-medium">
           {todos.filter((t) => t.completed).length} of {todos.length} tasks completed
         </p>
@@ -50,15 +52,15 @@ function App() {
       </div>
 
       {/* 간격 벌리기  */}
-      <div className="h-20" /> 
+      <div className="h-20" />
 
       {/* 리스트 섹션 */}
       <div className="w-full max-w-[550px]">
-        <TodoList 
-          todos={todos} 
-          onToggle={handleToggle} 
-          onEdit={handleEdit} 
-          onDelete={handleDelete} 
+        <TodoList
+          todos={todos}
+          onToggle={handleToggle}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
         />
       </div>
     </div>
