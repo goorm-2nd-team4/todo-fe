@@ -2,19 +2,14 @@ import React, { useState } from 'react';
 import TodoForm from './components/TodoForm';
 import { TodoList } from './components/TodoList';
 import { useTodos } from './hooks/useTodos';
-
-interface Todo {
-  id: string | number;
-  title: string;
-  completed: boolean;
-}
+import type { Todos } from './types/todo';
 
 function App() {
   const { todos, handleEdit, handleDelete, handleToggle, handleAdd } = useTodos() as {
-    todos: Todo[];
-    handleEdit: (id: string | number, title: string) => void;
-    handleDelete: (id: string | number) => void;
-    handleToggle: (id: string | number) => void;
+    todos: Todos;
+    handleEdit: (id: string, title: string) => void;
+    handleDelete: (id: string) => void;
+    handleToggle: (id: string) => void;
     handleAdd?: (title: string) => void;
   };
 
