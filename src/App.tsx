@@ -27,33 +27,38 @@ function App() {
     if (handleAdd) {
       handleAdd(value);
     }
-
+    
     setValue('');
   };
 
   return (
     <div className="min-h-screen bg-[#f5f5f5] flex flex-col items-center p-4">
-      <div className="h-[20vh] md:h-[25vh]" />
+      {/* 상단 여백 */}
+      <div className="h-[15vh] md:h-[20vh]" />
 
-      <div className="text-center mb-10">
-        <h1 className="font-bold text-[48px] md:text-[72px] text-[#1a1a1a] tracking-tight leading-none">
-          TODO APP
-        </h1>
-        <p className="text-[16px] text-[#6e7781] mt-2">
+      {/* 제목 섹션 */}
+      <div className="text-center mb-12">
+        <h1 className="font-bold text-[48px] md:text-[72px] text-[#1a1a1a] tracking-tight leading-none">TODO APP</h1>
+        <p className="text-[16px] text-[#6e7781] mt-4 font-medium">
           {todos.filter((t) => t.completed).length} of {todos.length} tasks completed
         </p>
       </div>
 
-      <div className="w-full max-w-[550px] mb-8">
+      {/* 입력창 섹션 */}
+      <div className="w-full max-w-[550px]">
         <TodoForm value={value} setValue={setValue} handleSubmit={handleSubmit} />
       </div>
 
+      {/* 간격 벌리기  */}
+      <div className="h-20" /> 
+
+      {/* 리스트 섹션 */}
       <div className="w-full max-w-[550px]">
-        <TodoList
-          todos={todos}
-          onToggle={handleToggle}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
+        <TodoList 
+          todos={todos} 
+          onToggle={handleToggle} 
+          onEdit={handleEdit} 
+          onDelete={handleDelete} 
         />
       </div>
     </div>
