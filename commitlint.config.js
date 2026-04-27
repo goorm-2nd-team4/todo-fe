@@ -1,5 +1,5 @@
 // commitlint.config.js
-module.exports = {
+export default {
   parserPreset: {
     parserOpts: {
       headerPattern: /^\[(FIX|ADD|UPDATE|FEAT|REMOVE|REFACTOR|DOCS|STYLE|TEST|CHORE)\]\s(.+)$/,
